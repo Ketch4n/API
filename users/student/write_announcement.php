@@ -14,7 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     // $uid = $data['student_id'];
-    $reason = $_POST['comment'];
+    $reason = $data['comment'];
+    $comment = nl2br($reason);
     // $reason = nl2br($data['comment']);
     // $date = $data['date'];
 
@@ -22,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Directly insert into the reference table
     $sqlInsert = "INSERT INTO announcement (messageA) VALUES (?)";
     $stmtInsert = $con->prepare($sqlInsert);
-    $stmtInsert->bind_param("s", $reason);
+    $stmtInsert->bind_param("s", $comment);
 
     if ($stmtInsert->execute()) {
         // Data inserted successfully

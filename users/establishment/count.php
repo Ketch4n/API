@@ -13,12 +13,13 @@ $response = array();
 $tables = array(
     'users' => 'SELECT COUNT(*) AS total_users FROM users',
     'estab' => 'SELECT COUNT(*) AS total_estab FROM establishment',
-      'absent' => 'SELECT COUNT(*) AS total_absent FROM absent',
-      'late' => "SELECT COUNT(*) AS total_late FROM dtr WHERE time_in_am > '08:00:00' OR time_in_pm > '13:00:00'",
-    
-  
-      
-   
+    'absent' => 'SELECT COUNT(*) AS total_absent FROM absent',
+    'late' => "SELECT COUNT(*) AS total_late FROM dtr WHERE time_in_am > '08:00:00' OR time_in_pm > '13:00:00'",
+    'announcement' => "SELECT COUNT(*) AS total_announcement FROM announcement",
+
+
+
+
     // Add more tables as needed
 );
 
@@ -43,4 +44,3 @@ $con->close();
 // Return the JSON response
 header('Content-Type: application/json');
 echo json_encode($response);
-?>
